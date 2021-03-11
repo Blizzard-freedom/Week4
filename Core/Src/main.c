@@ -46,12 +46,12 @@ DMA_HandleTypeDef hdma_adc1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-uint32_t now =0;
+uint32_t now =0; // check
 uint32_t ADCData[4]={0};
-uint32_t TimeStamp = 0;
-uint32_t ConditionTime = 0;
+uint32_t TimeStamp = 0;//set time
+uint32_t ConditionTime = 0;//condition random
 uint32_t ReflexTime =0;
-uint32_t TimeStamp2 = 0;
+uint32_t TimeStamp2 = 0;//debounce switch
 int Mode = 0;
 /* USER CODE END PV */
 
@@ -344,7 +344,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		}else if(Mode==1){
 			Mode = 0;
 			if(HAL_GetTick()-TimeStamp<ConditionTime){
-				ReflexTime = 33333333;
+				ReflexTime = 33333333;//error monitor
 			}else{
 			ReflexTime = HAL_GetTick()-TimeStamp - ConditionTime;
 			}
